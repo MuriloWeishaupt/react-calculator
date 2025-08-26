@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.container {
+    width: 30%;
+    margin: 40px auto;
+}
+
+.buttonsContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.title {
+    color: aliceblue;
+    text-align: center;
+    padding: 15px;
+    text-transform: uppercase; 
+}

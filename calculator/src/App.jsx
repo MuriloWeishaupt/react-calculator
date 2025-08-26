@@ -1,5 +1,6 @@
-import Buttons from './components/Buttons'
 import './App.css'
+import Buttons from './components/Buttons/Index'
+import Display from './components/Display/Index'
 import { useState } from 'react'
 
 function App() {
@@ -19,7 +20,9 @@ function App() {
       return
     }
 
-    const clearDisplay = clearDisplay ? '' : states.displayValue;
+    const clearDisplay = states.displayValue === '0' || states.clearDisplay;
+
+    const currentValue = clearDisplay ? '' : states.displayValue; 
 
     const displayValue = currentValue + number;
 
@@ -29,7 +32,7 @@ function App() {
 
     const newValue = parseFloat(displayValue);
 
-    const values = [...states.value];
+    const values = [...states.values];
     values[states.current] = newValue;
     setStates(copyValue => {
       return {...copyValue, values}
@@ -71,28 +74,29 @@ function App() {
   }
 
   return (
-    <>
-      <Buttons value="AC" type="triple" />
-      <Buttons value="/" type="operation" />
-      <Buttons value="7" />
-      <Buttons value="8" />
-      <Buttons value="9" />
-      <Buttons value="4" />
-      <Buttons value="5" />
-      <Buttons value="6" />
-      <Buttons value="-" type="operation" />
-      <Buttons value="1" />
-      <Buttons value="2" />
-      <Buttons value="3" />
-      <Buttons value="+" type="operation" />
-      <Buttons value="0" type="double" />
-      <Buttons value="." />
-      <Buttons value="=" type="operation" />
-
-
-
-
-    </>
+    <div className='container'>
+      <h1 className='title'>React Calculator ETEC</h1>
+      <Display value={states.displayValue}/>
+      <div className='buttonsContainer'>
+        <Buttons label="AC" type="triple" action={clearMemory}/>
+        <Buttons label="/" type="operation" action={() => {setOperation('/')}} />
+        <Buttons label="7" action={() => addNumber('7')}/>
+        <Buttons label="8" action={() => addNumber('8')}/>
+        <Buttons label="9" action={() => addNumber('9')}/>
+        <Buttons label="*" type="operation" action={() => {setOperation('*')}}/>
+        <Buttons label="4" action={() => addNumber('4')}/>
+        <Buttons label="5" action={() => addNumber('5')}/>
+        <Buttons label="6" action={() => addNumber('6')}/>
+        <Buttons label="-" type="operation" action={() => {setOperation('-')}}/>
+        <Buttons label="1" action={() => addNumber('1')}/>
+        <Buttons label="2" action={() => addNumber('2')}/>
+        <Buttons label="3" action={() => addNumber('3')}/>
+        <Buttons label="+" type="operation"  action={() => {setOperation('+')}}/>
+        <Buttons label="0" type="double" action={() => {addNumber(0)}}/>
+        <Buttons label="." action={() => addNumber('.')}/>
+        <Buttons label="=" type="operation" action={() => {setOperation('=')}} />
+      </div>
+    </div>
 
   )
 }

@@ -1,9 +1,11 @@
 import "./Buttons.css"
+import React from "react"
 
-export default function Index({value, type}) {
+function Index({action, type, label }) {
     return (
-        <div>
-            <p className={`buttons ${type ? type: ""}`}>{value}</p>
-        </div>
+            <p onClick={action} className={`buttons ${type ? type: ""}`}>
+            {label}</p>
     )
 }
+
+export default Index;

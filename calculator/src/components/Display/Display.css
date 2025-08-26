@@ -1,0 +1,15 @@
+.display {
+    flex: 1;
+    padding: 20;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.5);
+    align-items: flex-end;
+    height: 15vh;
+};
+
+.displayValue {
+    font-size: 60px;
+    color: #FFF;
+    text-align: center;
+    padding-top: 25px;
+}
